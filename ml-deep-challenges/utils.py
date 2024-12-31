@@ -1,6 +1,8 @@
 from functools import wraps
 from typing import Any, Callable, Tuple
 
+import numpy as np
+
 
 def time_func(f: Callable) -> Any:
     @wraps(f)
@@ -13,3 +15,7 @@ def time_func(f: Callable) -> Any:
         return result
 
     return wrapper
+
+
+def compare_two_arrays(arr1: np.ndarray, arr2: np.ndarray) -> bool:
+    return np.all(np.isclose(arr1, arr2))
